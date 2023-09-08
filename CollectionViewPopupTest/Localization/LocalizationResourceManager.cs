@@ -56,6 +56,9 @@
             CultureInfo.DefaultThreadCurrentCulture = ci;
             CultureInfo.DefaultThreadCurrentUICulture = ci;
 
+            if (DeviceInfo.Current.Platform == DevicePlatform.iOS)
+                return;
+
             foreach (var thread in Process.GetCurrentProcess().Threads.OfType<Thread>())
             {
                 thread.CurrentCulture = ci;
