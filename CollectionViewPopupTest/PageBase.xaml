@@ -12,22 +12,21 @@
         <ControlTemplate>
             <Grid>
                 <ContentPresenter />
-                <Frame VerticalOptions="Fill" 
+                <Border VerticalOptions="Fill" 
                        HorizontalOptions="Fill"
                        Background="#99222222"
-                       CornerRadius="0"
                        x:Name="BackgroundFrame"
                        IsVisible="{Binding Source={x:Reference thisPage}, Path=PopupView, Converter={StaticResource IsNotNullConverter}}" >
 
-                    <Frame.GestureRecognizers>
+                    <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                    </Frame.GestureRecognizers>
-                </Frame>
-                <Frame VerticalOptions="Center" 
+                    </Border.GestureRecognizers>
+                </Border>
+                <Border VerticalOptions="Center" 
                        HorizontalOptions="Center"
                        Background="#00000000"
+                       Stroke="Transparent"
                        InputTransparent="False"
-                       CornerRadius="0"
                        Content="{Binding Source={x:Reference thisPage}, Path=PopupView}"
                        IsVisible="{Binding Source={x:Reference thisPage}, Path=PopupView, Converter={StaticResource IsNotNullConverter}}" />
             </Grid>

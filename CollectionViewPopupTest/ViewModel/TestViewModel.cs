@@ -1,4 +1,6 @@
-﻿namespace CollectionViewPopupTest.ViewModel
+﻿using CollectionViewPopupTest.Localization;
+
+namespace CollectionViewPopupTest.ViewModel
 {
     public class TestViewModel
     {
@@ -10,8 +12,8 @@
 
         public TestViewModel() 
         {
-            Title = "Test popup";
-            SubTitle = "with 5 items";
+            Title = AppResources.TestPopupTitle;
+            SubTitle = AppResources.TestPopupSubtitle;
             Items = new List<TestItem>()
             { 
                 new TestItem() { Name = "Item1", SomeNumber = 1 },

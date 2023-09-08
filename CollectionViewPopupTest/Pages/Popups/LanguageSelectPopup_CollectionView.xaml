@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ext="clr-namespace:CollectionViewPopupTest.Extensions"
+             xmlns:converters="clr-namespace:CollectionViewPopupTest.Converters"
+             x:Class="CollectionViewPopupTest.Pages.Popups.LanguageSelectPopup_CollectionView"
+             x:Name="Root">
+    <Grid RowDefinitions="Auto, *" BackgroundColor="White">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"
+                                    x:Name="StringToImageSourceConverter"/>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Label Grid.Row="0"
+            Text="{ext:Translate LanguageSelectTitle}"
+            HorizontalOptions="Center" />
+        <CollectionView Grid.Row="1"
+                  ItemsSource="{Binding Languages}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="auto, *, auto" >
+                        <Image Grid.Column="1" 
+                               HeightRequest="60"
+                               WidthRequest="60"
+                               HorizontalOptions="Start"
+                               Source="{Binding IconSource, Converter={StaticResource StringToImageSourceConverter}}"/>
+                        <Label Grid.Column="1" Text="{Binding Description}" />
+                        <Label Grid.Column="2" Text="V" IsVisible="{Binding IsChecked}" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.LanguageSelectedCommand, Source={x:Reference Root}}"
+                                                    CommandParameter="{Binding LangCode}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentView>

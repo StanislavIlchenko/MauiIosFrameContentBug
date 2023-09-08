@@ -20,6 +20,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		Localization.LocalizationResourceManager.Initialize();
 		builder.Services.AddSingleton<IPopupDialogService, PopupDialogService>();
 
 #if DEBUG

@@ -1,13 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <local:PageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ext="clr-namespace:CollectionViewPopupTest.Extensions"
+             xmlns:converters="clr-namespace:CollectionViewPopupTest.Converters"
              xmlns:local="clr-namespace:CollectionViewPopupTest"
              x:Class="CollectionViewPopupTest.MainPage">
+    
 
     <Grid ColumnDefinitions="*, *">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"
+                                    x:Name="StringToImageSourceConverter"/>
+            </ResourceDictionary>
+        </Grid.Resources>
         <VerticalStackLayout Grid.Column="0">
-            <Label Text="CollectionView popup" />
-            <Button Text="Show" Command="{Binding ShowCollectionView}" />
+            <Label Text="{ext:Translate CollectionViewPopupName}" />
+            <Button Text="{ext:Translate ShowButton}" Command="{Binding ShowCollectionView}" />
+            <HorizontalStackLayout Padding="0" Margin="0, 15, 0, 0" BackgroundColor="Wheat" >
+                <Label Text="{ext:Translate LanguageLabel}" />
+                <Image  HeightRequest="60" 
+                        WidthRequest="60"
+                        Source="{ext:Translate Icon, Converter={StaticResource StringToImageSourceConverter}}"
+                        />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectLanguageCommand}" />
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="0" Margin="0, 15, 0, 0" BackgroundColor="Azure" >
+                <Label Text="{ext:Translate LanguageLabel}" />
+                <Image  HeightRequest="60" 
+                        WidthRequest="60"
+                        Source="{ext:Translate Icon, Converter={StaticResource StringToImageSourceConverter}}"
+                        />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectLanguageCommand_CollectionView}" />
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>
 </local:PageBase>
