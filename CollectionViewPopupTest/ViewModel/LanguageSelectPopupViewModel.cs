@@ -27,7 +27,7 @@ namespace CollectionViewPopupTest.ViewModel
 
         private static LanguageViewModel CreateLanguageModel(string langCode, string name, string current)
         {
-            return new LanguageViewModel(langCode, $"{langCode}.png", name, name == current);
+            return new LanguageViewModel($"{langCode}.png", langCode, name, name == current);
         }
 
         private void SelectLanguage(string langCode)

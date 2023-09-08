@@ -11,6 +11,7 @@ namespace CollectionViewPopupTest.ViewModel
         public Command SelectLanguageCommand { get; set; }
 
         public Command SelectLanguageCommand_CollectionView { get; set; }
+        public Command SelectLanguageCommand_StackView { get; set; }
 
         public MainPageViewModel(IPopupDialogService popupDialogService) 
         {
@@ -18,6 +19,7 @@ namespace CollectionViewPopupTest.ViewModel
             ShowCollectionView = new Command(ShowCollectionViewPopup);
             SelectLanguageCommand = new Command(ShowSelectLanguagePopup);
             SelectLanguageCommand_CollectionView = new Command(ShowSelectLanguagePopup_CollectionView);
+            SelectLanguageCommand_StackView = new Command(ShowSelectLanguagePopup_StackList);
         }
 
         private void ShowCollectionViewPopup()
@@ -42,6 +44,14 @@ namespace CollectionViewPopupTest.ViewModel
         {
             var languagesViewModel = new LanguageSelectPopupViewModel(_popupDialogService, Localization.AppResources.CurrentLanguage);
             var view = new LanguageSelectPopup_CollectionView();
+            view.BindingContext = languagesViewModel;
+
+            _popupDialogService.ShowPopup(view);
+        }
+        private void ShowSelectLanguagePopup_StackList()
+        {
+            var languagesViewModel = new LanguageSelectPopupViewModel(_popupDialogService, Localization.AppResources.CurrentLanguage);
+            var view = new LanguageSelectPopup_StackList();
             view.BindingContext = languagesViewModel;
 
             _popupDialogService.ShowPopup(view);

@@ -37,6 +37,16 @@
                     <TapGestureRecognizer Command="{Binding SelectLanguageCommand_CollectionView}" />
                 </HorizontalStackLayout.GestureRecognizers>
             </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="0" Margin="0, 15, 0, 0" BackgroundColor="ForestGreen" >
+                <Label Text="{ext:Translate LanguageLabel}" />
+                <Image  HeightRequest="60" 
+                        WidthRequest="60"
+                        Source="{ext:Translate Icon, Converter={StaticResource StringToImageSourceConverter}}"
+                        />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectLanguageCommand_StackView}" />
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>
 </local:PageBase>
