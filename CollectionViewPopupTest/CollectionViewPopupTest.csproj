@@ -41,6 +41,7 @@
 		<!-- Splash Screen -->
 
 		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -50,17 +51,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\LanguageIcons\de.png" />
-	  <None Remove="Resources\LanguageIcons\en.png" />
-	  <None Remove="Resources\LanguageIcons\fr.png" />
-	  <None Remove="Resources\LanguageIcons\it.png" />
+	  <None Remove="Resources\Images\LanguageIcons\de.png" />
+	  <None Remove="Resources\Images\LanguageIcons\en.png" />
+	  <None Remove="Resources\Images\LanguageIcons\fr.png" />
+	  <None Remove="Resources\Images\LanguageIcons\it.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\LanguageIcons\de.png" />
-	  <EmbeddedResource Include="Resources\LanguageIcons\en.png" />
-	  <EmbeddedResource Include="Resources\LanguageIcons\fr.png" />
-	  <EmbeddedResource Include="Resources\LanguageIcons\it.png" />
+	  <MauiImage Include="Resources\Images\LanguageIcons\de.png" />
+	  <MauiImage Include="Resources\Images\LanguageIcons\en.png" />
+	  <MauiImage Include="Resources\Images\LanguageIcons\fr.png" />
+	  <MauiImage Include="Resources\Images\LanguageIcons\it.png" />
 	</ItemGroup>
 
 	<ItemGroup>
