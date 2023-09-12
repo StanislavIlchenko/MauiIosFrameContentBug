@@ -6,33 +6,35 @@
              x:Class="CollectionViewPopupTest.Pages.Popups.LanguageSelectPopup"
              x:Name="Root">
     <Grid RowDefinitions="Auto, *" BackgroundColor="White">
-            <Grid.Resources>
-                <ResourceDictionary>
-                    <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"
-                                    x:Name="StringToImageSourceConverter"/>
-                </ResourceDictionary>
-            </Grid.Resources>
-            <Label Grid.Row="0"
-            Text="{ext:Translate LanguageSelectTitle}"
-            HorizontalOptions="Center" />
+        <Grid.Resources>
+            <ResourceDictionary>
+                <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"
+                                x:Name="StringToImageSourceConverter"/>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Label Grid.Row="0"
+        Text="{ext:Translate LanguageSelectTitle}"
+        HorizontalOptions="Center" />
         <ListView Grid.Row="1"
                   ItemsSource="{Binding Languages}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="auto, *, auto" >
-                        <Image Grid.Column="1" 
-                               HeightRequest="60"
-                               WidthRequest="60"
-                               HorizontalOptions="Start"
-                               Source="{Binding IconSource, Converter={StaticResource StringToImageSourceConverter}}"/>
-                        <Label Grid.Column="1" Text="{Binding Description}" />
-                        <Label Grid.Column="2" Text="V" IsVisible="{Binding IsChecked}" />
+                    <ViewCell>
+                        <Grid ColumnDefinitions="auto, *, auto" >
+                            <Image Grid.Column="1" 
+                                   HeightRequest="60"
+                                   WidthRequest="60"
+                                   HorizontalOptions="Start"
+                                   Source="{Binding IconSource, Converter={StaticResource StringToImageSourceConverter}}"/>
+                            <Label Grid.Column="1" Text="{Binding Description}" />
+                            <Label Grid.Column="2" Text="V" IsVisible="{Binding IsChecked}" />
                         
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BindingContext.LanguageSelectedCommand, Source={x:Reference Root}}"
-                                                    CommandParameter="{Binding LangCode}" />
-                        </Grid.GestureRecognizers>
-                    </Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.LanguageSelectedCommand, Source={x:Reference Root}}"
+                                                        CommandParameter="{Binding LangCode}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>            
         </ListView>
